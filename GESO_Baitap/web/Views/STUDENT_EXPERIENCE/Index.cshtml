@@ -1,0 +1,82 @@
+﻿@model IEnumerable<web.Models.STUDENT_EXPERIENCE>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.STUDENT_FK)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.COMPANY_NAME)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TITLE)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FROM_MONTH)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TO_MONTH)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FROM_YEAR)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TO_YEAR)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DESCRIPTION_JOB)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SALARY)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.STUDENT_FK)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.COMPANY_NAME)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TITLE)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FROM_MONTH)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TO_MONTH)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FROM_YEAR)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TO_YEAR)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DESCRIPTION_JOB)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SALARY)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.ID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.ID })
+        </td>
+    </tr>
+}
+
+</table>

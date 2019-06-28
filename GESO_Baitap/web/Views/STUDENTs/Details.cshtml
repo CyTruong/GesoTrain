@@ -1,0 +1,105 @@
+﻿@model web.Models.STUDENT
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div>
+    <fieldset>
+        <legend style="font-size:200%;color:blue;margin-bottom:20px;margin-top:100px"><b>Thông tin tài khoản</b> </legend>
+        <div class="col-lg-2">
+            <img src="https://i.imgur.com/TFxmGVu.jpg" style="width:200px;height:200px" />
+        </div>
+        <div class="col-lg-4">
+            <dl class="dl-horizontal" style="font-size:large">
+                <dt>
+                    @Html.DisplayNameFor(model => model.NAME)
+                </dt>
+
+                <dd style="color:blue">
+                    <b>
+                        @Html.DisplayFor(model => model.NAME)
+                    </b>
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.EMAIL)
+                </dt>
+
+                <dd style="color:blue">
+                    <b>
+                        @Html.DisplayFor(model => model.EMAIL)
+                    </b>
+                </dd>
+                dt>
+                @Html.DisplayNameFor(model => model.GENDER)
+                </dt>
+
+                <dd style="color:blue">
+                    <b>
+                        @Html.DisplayFor(model => model.GENDER)
+                    </b>
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.PHONE)
+                </dt>
+
+                <dd style="color:blue">
+                    <b>
+                        @Html.DisplayFor(model => model.PHONE)
+                    </b>
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.CLASS_CODE)
+                </dt>
+
+                <dd style="color:blue">
+                    <b>
+                        @Html.DisplayFor(model => model.CLASS_CODE)
+                    </b>
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.SCHOOL_FK)
+                </dt>
+
+                <dd style="color:blue">
+                    <b>
+                        @ViewBag.tentruong
+                    </b>
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.STATUS_FK)
+                </dt>
+
+                <dd style="color:blue">
+                    <b>
+                        @Html.DisplayFor(model => model.STATUS_FK)
+                    </b>
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.FACULTIES_FK)
+                </dt>
+
+                <dd style="color:blue">
+                    <b>
+                        @Html.DisplayFor(model => model.FACULTIES_FK)
+                    </b>
+                </dd>
+
+            </dl>
+
+        </div>
+    </fieldset>
+    <div align="center">
+        <input type="button" name="edit" value="Chỉnh sửa" style="width:100px; height:50px; font-size:large;color:white;background-color:red;border-color:red;margin:auto" onclick="location.href='@Url.Action("Edit", new { id = Model.ID})'" />
+        <input type="button" name="back" value="Trang chủ" style="width:100px; height:50px; font-size:large;color:black;background-color:white;border-color:white; margin:auto" onclick="location.href='@Url.Action("Index","Home")'" />
+    </div>
+</div>
+<div>
+ 
+</div>

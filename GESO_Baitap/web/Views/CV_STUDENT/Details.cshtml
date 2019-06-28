@@ -1,0 +1,43 @@
+﻿@model web.Models.CV_STUDENT
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>CV_STUDENT</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.STUDENT_FK)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.STUDENT_FK)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.HOBBY)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.HOBBY)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SPECIAL_SKILLS_TALENTS)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SPECIAL_SKILLS_TALENTS)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

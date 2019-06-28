@@ -1,0 +1,56 @@
+﻿@model web.Models.UserModel
+
+@{
+    ViewBag.Title = "Userpage";
+    ViewBag.expindex = 0;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $("#toggle_trigger").click(function () {
+            $("#toggle_ct").toggle();
+        });
+    });
+</script>
+
+
+<div>
+   
+    @Html.Partial("_UserInfo",Model)
+
+    @Html.Partial("_StudentExpPartialview", Model)
+
+    @Html.Partial("_StudenSkillPartialview", Model)
+
+    @Html.Partial("_StudentTrainningPartialview", Model)
+
+</div>
+
+<style>
+    .required::after {
+        content: " *";
+        color: red
+    }
+
+    .legend_required::after {
+        content: "( Bắt buộc )";
+        color: red;
+        font-size: 10px;
+        margin-bottom: 20px;
+    }
+
+    .legend_notrequired::after {
+        content: "( Không bắt buộc )";
+        color: red;
+        font-size: 10px;
+        margin-bottom: 20px;
+    }
+
+    .myborder {
+        border-style: solid;
+        border-color: cornflowerblue;
+        border-width: thin
+    }
+</style>

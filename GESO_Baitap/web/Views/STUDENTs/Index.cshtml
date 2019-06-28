@@ -1,0 +1,106 @@
+﻿@model IEnumerable<web.Models.STUDENT>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.NAME)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EMAIL)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PHONE)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CLASS_CODE)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SCHOOL_FK)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.STATUS_FK)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CREATE_USER)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CREATE_DATE)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ALTER_USER)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ALTER_DATE)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CODE)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FACULTIES_FK)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AVATAR)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.NAME)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.EMAIL)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PHONE)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CLASS_CODE)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SCHOOL_FK)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.STATUS_FK)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CREATE_USER)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CREATE_DATE)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ALTER_USER)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ALTER_DATE)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CODE)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FACULTIES_FK)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AVATAR)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.ID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.ID })
+        </td>
+    </tr>
+}
+
+</table>

@@ -1,0 +1,107 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="CVModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="CV_STUDENT">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="STUDENT_FK" Type="int" />
+    <Property Name="HOBBY" Type="nvarchar" MaxLength="250" />
+    <Property Name="SPECIAL_SKILLS_TALENTS" Type="nvarchar" MaxLength="250" />
+  </EntityType>
+  <EntityType Name="FACULTIES">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="NAME" Type="nvarchar" MaxLength="50" />
+    <Property Name="SCHOOL_FK" Type="int" />
+  </EntityType>
+  <EntityType Name="SCHOOL">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="NAME" Type="nvarchar" MaxLength="100" />
+    <Property Name="ADDRESS" Type="nvarchar" MaxLength="200" />
+    <Property Name="STATUS_FK" Type="int" Nullable="false" />
+    <Property Name="CREATE_USER" Type="int" />
+    <Property Name="CREATE_DATE" Type="datetime" Nullable="false" />
+    <Property Name="ALTER_USER" Type="int" />
+    <Property Name="ALTER_DATE" Type="datetime" Nullable="false" />
+    <Property Name="CODE" Type="nvarchar" MaxLength="20" />
+    <Property Name="HOUR_ABSENT" Type="nvarchar" MaxLength="20" />
+    <Property Name="DAY_ABSENT" Type="int" />
+    <Property Name="TYPEOFTRAINING_FK" Type="int" />
+  </EntityType>
+  <EntityType Name="SKILL">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="NAME" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="STATUS">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="NAME" Type="nvarchar" MaxLength="25" />
+  </EntityType>
+  <EntityType Name="STUDENT">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="NAME" Type="nvarchar" MaxLength="100" />
+    <Property Name="EMAIL" Type="nvarchar" MaxLength="100" />
+    <Property Name="PHONE" Type="nvarchar" MaxLength="20" />
+    <Property Name="CLASS_CODE" Type="nvarchar" MaxLength="20" />
+    <Property Name="SCHOOL_FK" Type="int" />
+    <Property Name="STATUS_FK" Type="int" />
+    <Property Name="CREATE_USER" Type="int" />
+    <Property Name="CREATE_DATE" Type="datetime" />
+    <Property Name="ALTER_USER" Type="int" />
+    <Property Name="ALTER_DATE" Type="datetime" />
+    <Property Name="CODE" Type="nvarchar" MaxLength="50" />
+    <Property Name="FACULTIES_FK" Type="int" />
+    <Property Name="AVATAR" Type="nvarchar" MaxLength="250" />
+    <Property Name="GENDER" Type="int" />
+    <Property Name="TRAINING_YEAR_FROM" Type="int" Nullable="false" />
+    <Property Name="TRAINING_YEAR_TO" Type="int" Nullable="false" />
+    <Property Name="LEVEL" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="STUDENT_EXPERIENCE">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="STUDENT_FK" Type="int" />
+    <Property Name="COMPANY_NAME" Type="nvarchar" MaxLength="250" />
+    <Property Name="TITLE" Type="nvarchar" MaxLength="250" />
+    <Property Name="FROM_MONTH" Type="int" />
+    <Property Name="TO_MONTH" Type="int" />
+    <Property Name="FROM_YEAR" Type="int" />
+    <Property Name="TO_YEAR" Type="int" />
+    <Property Name="DESCRIPTION_JOB" Type="nvarchar" MaxLength="250" />
+    <Property Name="SALARY" Type="float" />
+  </EntityType>
+  <EntityType Name="STUDENT_SKILL">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="STUDENT_FK" Type="int" Nullable="false" />
+    <Property Name="SKILL_FK" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityContainer Name="CVModelStoreContainer">
+    <EntitySet Name="CV_STUDENT" EntityType="Self.CV_STUDENT" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="FACULTIES" EntityType="Self.FACULTIES" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SCHOOL" EntityType="Self.SCHOOL" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SKILL" EntityType="Self.SKILL" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="STATUS" EntityType="Self.STATUS" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="STUDENT" EntityType="Self.STUDENT" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="STUDENT_EXPERIENCE" EntityType="Self.STUDENT_EXPERIENCE" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="STUDENT_SKILL" EntityType="Self.STUDENT_SKILL" Schema="dbo" store:Type="Tables" />
+  </EntityContainer>
+</Schema>

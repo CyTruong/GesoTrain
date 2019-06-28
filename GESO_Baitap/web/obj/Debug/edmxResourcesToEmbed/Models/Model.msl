@@ -1,0 +1,107 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="CVModelStoreContainer" CdmEntityContainer="CV_MVCEntities">
+    <EntitySetMapping Name="CV_STUDENT">
+      <EntityTypeMapping TypeName="CVModel.CV_STUDENT">
+        <MappingFragment StoreEntitySet="CV_STUDENT">
+          <ScalarProperty Name="SPECIAL_SKILLS_TALENTS" ColumnName="SPECIAL_SKILLS_TALENTS" />
+          <ScalarProperty Name="HOBBY" ColumnName="HOBBY" />
+          <ScalarProperty Name="STUDENT_FK" ColumnName="STUDENT_FK" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="FACULTIES">
+      <EntityTypeMapping TypeName="CVModel.FACULTIES">
+        <MappingFragment StoreEntitySet="FACULTIES">
+          <ScalarProperty Name="SCHOOL_FK" ColumnName="SCHOOL_FK" />
+          <ScalarProperty Name="NAME" ColumnName="NAME" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SCHOOL">
+      <EntityTypeMapping TypeName="CVModel.SCHOOL">
+        <MappingFragment StoreEntitySet="SCHOOL">
+          <ScalarProperty Name="TYPEOFTRAINING_FK" ColumnName="TYPEOFTRAINING_FK" />
+          <ScalarProperty Name="DAY_ABSENT" ColumnName="DAY_ABSENT" />
+          <ScalarProperty Name="HOUR_ABSENT" ColumnName="HOUR_ABSENT" />
+          <ScalarProperty Name="CODE" ColumnName="CODE" />
+          <ScalarProperty Name="ALTER_DATE" ColumnName="ALTER_DATE" />
+          <ScalarProperty Name="ALTER_USER" ColumnName="ALTER_USER" />
+          <ScalarProperty Name="CREATE_DATE" ColumnName="CREATE_DATE" />
+          <ScalarProperty Name="CREATE_USER" ColumnName="CREATE_USER" />
+          <ScalarProperty Name="STATUS_FK" ColumnName="STATUS_FK" />
+          <ScalarProperty Name="ADDRESS" ColumnName="ADDRESS" />
+          <ScalarProperty Name="NAME" ColumnName="NAME" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SKILL">
+      <EntityTypeMapping TypeName="CVModel.SKILL">
+        <MappingFragment StoreEntitySet="SKILL">
+          <ScalarProperty Name="NAME" ColumnName="NAME" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="STATUS">
+      <EntityTypeMapping TypeName="CVModel.STATUS">
+        <MappingFragment StoreEntitySet="STATUS">
+          <ScalarProperty Name="NAME" ColumnName="NAME" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="STUDENT">
+      <EntityTypeMapping TypeName="CVModel.STUDENT">
+        <MappingFragment StoreEntitySet="STUDENT">
+          <ScalarProperty Name="LEVEL" ColumnName="LEVEL" />
+          <ScalarProperty Name="TRAINING_YEAR_TO" ColumnName="TRAINING_YEAR_TO" />
+          <ScalarProperty Name="TRAINING_YEAR_FROM" ColumnName="TRAINING_YEAR_FROM" />
+          <ScalarProperty Name="GENDER" ColumnName="GENDER" />
+          <ScalarProperty Name="AVATAR" ColumnName="AVATAR" />
+          <ScalarProperty Name="FACULTIES_FK" ColumnName="FACULTIES_FK" />
+          <ScalarProperty Name="CODE" ColumnName="CODE" />
+          <ScalarProperty Name="ALTER_DATE" ColumnName="ALTER_DATE" />
+          <ScalarProperty Name="ALTER_USER" ColumnName="ALTER_USER" />
+          <ScalarProperty Name="CREATE_DATE" ColumnName="CREATE_DATE" />
+          <ScalarProperty Name="CREATE_USER" ColumnName="CREATE_USER" />
+          <ScalarProperty Name="STATUS_FK" ColumnName="STATUS_FK" />
+          <ScalarProperty Name="SCHOOL_FK" ColumnName="SCHOOL_FK" />
+          <ScalarProperty Name="CLASS_CODE" ColumnName="CLASS_CODE" />
+          <ScalarProperty Name="PHONE" ColumnName="PHONE" />
+          <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
+          <ScalarProperty Name="NAME" ColumnName="NAME" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="STUDENT_EXPERIENCE">
+      <EntityTypeMapping TypeName="CVModel.STUDENT_EXPERIENCE">
+        <MappingFragment StoreEntitySet="STUDENT_EXPERIENCE">
+          <ScalarProperty Name="SALARY" ColumnName="SALARY" />
+          <ScalarProperty Name="DESCRIPTION_JOB" ColumnName="DESCRIPTION_JOB" />
+          <ScalarProperty Name="TO_YEAR" ColumnName="TO_YEAR" />
+          <ScalarProperty Name="FROM_YEAR" ColumnName="FROM_YEAR" />
+          <ScalarProperty Name="TO_MONTH" ColumnName="TO_MONTH" />
+          <ScalarProperty Name="FROM_MONTH" ColumnName="FROM_MONTH" />
+          <ScalarProperty Name="TITLE" ColumnName="TITLE" />
+          <ScalarProperty Name="COMPANY_NAME" ColumnName="COMPANY_NAME" />
+          <ScalarProperty Name="STUDENT_FK" ColumnName="STUDENT_FK" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="STUDENT_SKILL">
+      <EntityTypeMapping TypeName="CVModel.STUDENT_SKILL">
+        <MappingFragment StoreEntitySet="STUDENT_SKILL">
+          <ScalarProperty Name="SKILL_FK" ColumnName="SKILL_FK" />
+          <ScalarProperty Name="STUDENT_FK" ColumnName="STUDENT_FK" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

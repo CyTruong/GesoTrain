@@ -1,0 +1,46 @@
+﻿@model IEnumerable<web.Models.CV_STUDENT>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.STUDENT_FK)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.HOBBY)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SPECIAL_SKILLS_TALENTS)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.STUDENT_FK)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.HOBBY)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SPECIAL_SKILLS_TALENTS)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.ID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.ID })
+        </td>
+    </tr>
+}
+
+</table>

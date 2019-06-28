@@ -1,0 +1,94 @@
+﻿@model IEnumerable<web.Models.SCHOOL>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.NAME)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ADDRESS)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.STATUS_FK)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CREATE_USER)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CREATE_DATE)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ALTER_USER)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ALTER_DATE)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CODE)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.HOUR_ABSENT)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DAY_ABSENT)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TYPEOFTRAINING_FK)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.NAME)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ADDRESS)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.STATUS_FK)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CREATE_USER)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CREATE_DATE)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ALTER_USER)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ALTER_DATE)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CODE)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.HOUR_ABSENT)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DAY_ABSENT)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TYPEOFTRAINING_FK)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.ID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.ID })
+        </td>
+    </tr>
+}
+
+</table>

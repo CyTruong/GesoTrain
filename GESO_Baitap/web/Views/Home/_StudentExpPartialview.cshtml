@@ -1,0 +1,317 @@
+﻿
+@model web.Models.UserModel
+
+<link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.7/css/select2.min.css" rel="stylesheet" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.7/js/select2.min.js"></script>
+
+<script>
+    $(document).ready(function () {
+        $("#toggle_trigger_stuexp").click(function () {
+            $("#toggle_ct_stuexp").toggle();
+        });
+    });
+</script>
+
+
+<script>
+    var selected = 0;
+</script>
+
+<fieldset>
+    <legend style="font-size:200%;color:red;margin-bottom:20px">
+        <label style="margin-top:75px" class="legend_notrequired ">Kinh ngiệm làm việc </label>
+        <input type="button" id="toggle_trigger_stuexp" class="btn btn-default col-lg-offset-6" value="Rút gọn" />
+    </legend>
+
+    <div class="col-lg-12" id="toggle_ct_stuexp">
+        @{int lastindex = Model.studenEXP.Count - 1;
+            for (int i = 0; i < lastindex; i++)
+            {
+                <script>
+                            $(document).ready(function () {
+                                $("#toggle_trigger2_@(i)").click(function () {
+                                    $("#toggle_ct1_@(i)").toggle();
+                                    $("#toggle_ct2_@(i)").toggle();
+                                    $("#toggle_ct3_@(i)").toggle();
+                                    $("#toggle_ct4_@(i)").toggle();
+                                    $("#toggle_ct5_@(i)").toggle();
+                                    $("#toggle_ct6_@(i)").toggle();
+                                });
+                            });
+                </script>
+                <div class="dl-horizontal myborder col-lg-7 col-lg-push-2" style="margin-top:20px">
+                    <dl style=" margin-top:20px" class="col-lg-offset-2">
+                        <dt>
+                            @Html.DisplayName("Tên công ty")
+                        </dt>
+
+                        <dd>
+                            @Html.DisplayFor(model => model.studenEXP[i].COMPANY_NAME)
+                        </dd>
+
+                        <dt>Từ : </dt>
+                        <dd>
+                            @Model.studenEXP[i].FROM_MONTH / @Model.studenEXP[i].FROM_YEAR
+                        </dd>
+
+                        <dt>Đến : </dt>
+                        <dd>
+                            @Model.studenEXP[i].TO_MONTH / @Model.studenEXP[i].TO_YEAR
+                        </dd>
+
+                        <dt>
+                            <b style="color:cornflowerblue" id="toggle_trigger2_@(i)" onclick=myFunction()>[Xem chi tiết] </b>
+                        </dt>
+                        <dd>
+
+                        </dd>
+                        <dt id="toggle_ct1_@(i)" style="display:none">
+                            @Html.DisplayName("Chức vụ")
+                        </dt>
+
+                        <dd id="toggle_ct2_@(i)" style="display:none">
+                            @Html.DisplayFor(model => model.studenEXP[i].TITLE)
+                        </dd>
+
+                        <dt id="toggle_ct3_@(i)" style="display:none">
+                            @Html.DisplayName("Mô tả công việc")
+                        </dt>
+
+                        <dd id="toggle_ct4_@(i)" style="display:none">
+                            @Html.DisplayFor(model => model.studenEXP[i].DESCRIPTION_JOB)
+                        </dd>
+
+                        <dt id="toggle_ct5_@(i)" style="display:none">
+                            @Html.DisplayName("Lương")
+                        </dt>
+
+                        <dd id="toggle_ct6_@(i)" style="display:none; margin-bottom:20px">
+                            @Html.DisplayFor(model => model.studenEXP[i].SALARY)
+                        </dd>
+                    </dl>
+
+                    <button id="btedit_@(i) " name="edit" value="sửa" class="btn btn-primary col-lg-2 col-lg-push-3 btnEditexp" data-toggle="modal" data-target="#editexp@(i)">  Sửa</button>
+
+                    <input type="button" name="delete" value="Xóa" class="btn btn-default col-lg-2 col-lg-push-4" onclick="location.href='@Url.Action("Delete","STUDENT_EXPERIENCE",new { id = Model.studenEXP[i].ID })'" style="margin-bottom:20px" />
+
+              
+
+                        <div class="modal fade" id="editexp@(i)" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog" role="document">
+                                
+                                @using (Html.BeginForm("Edit", "STUDENT_EXPERIENCE", null, FormMethod.Post, new { @sTUDENT_EXPERIENCE = Model.studenEXP[i] }))
+                                {
+                                    @Html.AntiForgeryToken()
+
+
+
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalLabel@(i)">Modal title</h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+
+                                            <div class="form-horizontal">
+                                                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+                                                <div class="form-group">
+                                                    @Html.Label("Tên công ty: ", htmlAttributes: new { @class = "control-label col-md-2" })
+                                                    <div class="col-md-10">
+                                                        @Html.EditorFor(model => model.studenEXP[i].COMPANY_NAME, new { htmlAttributes = new { @class = "form-control", @id = "companyname" + i } })
+                                                        @Html.ValidationMessageFor(model => model.studenEXP[i].COMPANY_NAME, "", new { @class = "text-danger" })
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group">
+                                                    @Html.Label("Chức danh: ", htmlAttributes: new { @class = "control-label col-md-2" })
+                                                    <div class="col-md-10">
+                                                        @Html.EditorFor(model => model.studenEXP[i].TITLE, new { htmlAttributes = new { @class = "form-control" , @id="title"+i} })
+                                                        @Html.ValidationMessageFor(model => model.studenEXP[i].TITLE, "", new { @class = "text-danger" })
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group">
+                                                    @Html.Label("Từ", htmlAttributes: new { @class = "control-label col-md-2 required" })
+                                                    <div class="col-md-10" style="font-size:large">
+                                                        @Html.DropDownListFor(model => model.studenEXP[i].FROM_MONTH, (IEnumerable<SelectListItem>)ViewBag.monthSelectList, "Tháng", htmlAttributes: new { style = "width: 100px;", @class = "select2",@id="fm"+i })
+                                                        @Html.ValidationMessageFor(model => model.studenEXP[i].FROM_MONTH, "", new { @class = "text-danger" })
+
+                                                        @Html.DropDownListFor(model => model.studenEXP[i].FROM_YEAR, (IEnumerable<SelectListItem>)ViewBag.yearSelectList, "Năm", htmlAttributes: new { style = "width: 100px;", @class = "select2", @id = "fy" + i })
+                                                        @Html.ValidationMessageFor(model => model.studenEXP[i].FROM_YEAR, "", new { @class = "text-danger" })
+
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group">
+                                                    @Html.Label("Đến ", htmlAttributes: new { @class = "control-label col-md-2 required" })
+                                                    <div class="col-md-10" style="font-size:large">
+                                                        @Html.DropDownListFor(model => model.studenEXP[i].TO_MONTH, (IEnumerable<SelectListItem>)ViewBag.monthSelectList, "Tháng", htmlAttributes: new { style = "width: 100px;", @class = "select2", @id = "tm" + i })
+                                                        @Html.ValidationMessageFor(model => model.studenEXP[i].TO_MONTH, "", new { @class = "text-danger" })
+
+                                                        @Html.DropDownListFor(model => model.studenEXP[i].TO_YEAR, (IEnumerable<SelectListItem>)ViewBag.yearSelectList, "Năm", htmlAttributes: new { style = "width: 100px;", @class = "select2", @id = "ty" + i })
+                                                        @Html.ValidationMessageFor(model => model.studenEXP[i].TO_YEAR, "", new { @class = "text-danger" })
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group">
+                                                    @Html.Label("Mô tả công việc : ", htmlAttributes: new { @class = "control-label col-md-2" })
+                                                    <div class="col-md-10">
+                                                        @Html.TextAreaFor(model => model.studenEXP[i].DESCRIPTION_JOB, 8, 50, htmlAttributes: new { @class = "form-control", @id = "des" + i })
+                                                        @Html.ValidationMessageFor(model => model.studenEXP[i].DESCRIPTION_JOB, "", new { @class = "text-danger" })
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group">
+                                                    @Html.Label("Lương : ", htmlAttributes: new { @class = "control-label col-md-2" })
+                                                    <div class="col-md-10">
+                                                        @Html.EditorFor(model => model.studenEXP[i].SALARY, new { htmlAttributes = new { @class = "form-control", @id = "sa" + i } })
+                                                        @Html.ValidationMessageFor(model => model.studenEXP[i].SALARY, "", new { @class = "text-danger" })
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            @Html.HiddenFor(m => m.studenEXP[i].COMPANY_NAME)
+                                            @Html.HiddenFor(m => m.studenEXP[i].DESCRIPTION_JOB)
+                                            @Html.HiddenFor(m => m.studenEXP[i].FROM_MONTH)
+                                            @Html.HiddenFor(m => m.studenEXP[i].FROM_YEAR)
+                                            @Html.HiddenFor(m => m.studenEXP[i].ID)
+                                            @Html.HiddenFor(m => m.studenEXP[i].SALARY)
+                                            @Html.HiddenFor(m => m.studenEXP[i].STUDENT_FK)
+                                            @Html.HiddenFor(m => m.studenEXP[i].TITLE)
+                                            @Html.HiddenFor(m => m.studenEXP[i].TO_MONTH)
+                                            @Html.HiddenFor(m => m.studenEXP[i].TO_YEAR)
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                            <button type="submit" class="btn btn-primary" formmethod="post">Save changes </button>
+                                        </div>
+
+                                    </div>
+                                }
+                            </div>
+                        </div>
+                    }
+                </div>
+            }
+        };
+
+
+    </div>
+
+    <form action="CreateEXP">
+
+        @using (Html.BeginForm("CreateEXP", "Home", null, FormMethod.Post, new { @UserModel = Model }))
+        {
+            @Html.AntiForgeryToken()
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <button formmethod="post" type="button" id="toggle_trigger" class="btn btn-primary col-lg-2 col-lg-push-5" style="margin-top:20px; margin-bottom:50px">Tạo mới</button>
+
+            </div>
+
+            <div class="form-horizontal" id="toggle_ct" style="display:none">
+
+                @Html.ValidationSummary(true, "Bị lỗi zòi", new { @class = "text-danger" })
+                <div></div>
+                @{int last = Model.studenEXP.Count - 1;
+
+                    <div class="form-group">
+                        @Html.Label("Tên công ty", htmlAttributes: new { @class = "control-label col-md-2 required" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.studenEXP[last].COMPANY_NAME, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.studenEXP[last].COMPANY_NAME, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.Label("Chức năng", htmlAttributes: new { @class = "control-label col-md-2 required" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.studenEXP[last].TITLE, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.studenEXP[last].TITLE, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.Label("Từ", htmlAttributes: new { @class = "control-label col-md-2 required" })
+                        <div class="col-md-10" style="font-size:large">
+                            @Html.DropDownListFor(model => model.studenEXP[last].FROM_MONTH, (IEnumerable<SelectListItem>)ViewBag.monthSelectList, "Tháng", htmlAttributes: new { style = "width: 100px;", @class = "select2" })
+                            @Html.ValidationMessageFor(model => model.studenEXP[last].FROM_MONTH, "", new { @class = "text-danger" })
+
+                            @Html.DropDownListFor(model => model.studenEXP[last].FROM_YEAR, (IEnumerable<SelectListItem>)ViewBag.yearSelectList, "Năm", htmlAttributes: new { style = "width: 100px;", @class = "select2" })
+                            @Html.ValidationMessageFor(model => model.studenEXP[last].FROM_YEAR, "", new { @class = "text-danger" })
+
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.Label("Đến ", htmlAttributes: new { @class = "control-label col-md-2 required" })
+                        <div class="col-md-10" style="font-size:large">
+                            @Html.DropDownListFor(model => model.studenEXP[last].TO_MONTH, (IEnumerable<SelectListItem>)ViewBag.monthSelectList, "Tháng", htmlAttributes: new { style = "width: 100px;", @class = "select2" })
+                            @Html.ValidationMessageFor(model => model.studenEXP[last].TO_MONTH, "", new { @class = "text-danger" })
+
+                            @Html.DropDownListFor(model => model.studenEXP[last].TO_YEAR, (IEnumerable<SelectListItem>)ViewBag.yearSelectList, "Năm", htmlAttributes: new { style = "width: 100px;", @class = "select2" })
+                            @Html.ValidationMessageFor(model => model.studenEXP[last].TO_YEAR, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+
+                    <div class="form-group">
+                        @Html.Label("Mô tả công việc", htmlAttributes: new { @class = "control-label col-md-2 " })
+                        <div class="col-md-10">
+                            @Html.TextAreaFor(model => model.studenEXP[last].DESCRIPTION_JOB, 8, 50, htmlAttributes: new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.studenEXP[last].DESCRIPTION_JOB, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.Label("Lương", htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.studenEXP[last].SALARY, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.studenEXP[last].SALARY, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                }
+
+                @{int lasti = Model.studenEXP.Count - 1;
+                    for (int i = 0; i < lasti; i++)
+                    {
+                        @Html.HiddenFor(m => m.studenEXP[i].COMPANY_NAME)
+                        @Html.HiddenFor(m => m.studenEXP[i].DESCRIPTION_JOB)
+                        @Html.HiddenFor(m => m.studenEXP[i].FROM_MONTH)
+                        @Html.HiddenFor(m => m.studenEXP[i].FROM_YEAR)
+                        @Html.HiddenFor(m => m.studenEXP[i].ID)
+                        @Html.HiddenFor(m => m.studenEXP[i].SALARY)
+                        @Html.HiddenFor(m => m.studenEXP[i].STUDENT_FK)
+                        @Html.HiddenFor(m => m.studenEXP[i].TITLE)
+                        @Html.HiddenFor(m => m.studenEXP[i].TO_MONTH)
+                        @Html.HiddenFor(m => m.studenEXP[i].TO_YEAR)
+                    }
+                }
+
+                @Html.HiddenFor(m => m.student.ALTER_DATE)
+                @Html.HiddenFor(m => m.student.ALTER_USER)
+                @Html.HiddenFor(m => m.student.AVATAR)
+                @Html.HiddenFor(m => m.student.CLASS_CODE)
+                @Html.HiddenFor(m => m.student.CODE)
+                @Html.HiddenFor(m => m.student.CREATE_DATE)
+                @Html.HiddenFor(m => m.student.CREATE_USER)
+                @Html.HiddenFor(m => m.student.EMAIL)
+                @Html.HiddenFor(m => m.student.FACULTIES_FK)
+                @Html.HiddenFor(m => m.student.ID)
+                @Html.HiddenFor(m => m.student.NAME)
+                @Html.HiddenFor(m => m.student.PHONE)
+                @Html.HiddenFor(m => m.student.SCHOOL_FK)
+                @Html.HiddenFor(m => m.student.STATUS_FK)
+
+
+                
+                        <input  type="submit" value="Save" class="btn btn-primary form-group col-md-offset-2 col-md-3" formmethod="post" />
+                  
+            </div>
+        }
+    </form>
+
+</fieldset>
+
+

@@ -1,0 +1,49 @@
+﻿@model web.Models.CV_STUDENT
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>CV_STUDENT</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.STUDENT_FK)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.STUDENT_FK)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.HOBBY)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.HOBBY)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SPECIAL_SKILLS_TALENTS)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SPECIAL_SKILLS_TALENTS)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

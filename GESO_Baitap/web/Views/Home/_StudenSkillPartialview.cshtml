@@ -1,0 +1,94 @@
+﻿@model web.Models.UserModel
+
+<script>
+    $(document).ready(function () {
+        $("#toggle_trigger_stuhoppy").click(function () {
+            $("#toggle_ct_stuhoppy").toggle();
+        });
+    });
+</script>
+
+<form action="UpdateStuSkill">
+    <fieldset>
+        @using (Html.BeginForm("UpdateStuSkill", "Home", null, FormMethod.Post, new { @UserModel = Model }))
+        {
+            <legend style="font-size:200%;color:red;margin-bottom:20px;margin-left:75px">
+                <label style="margin-top:75px" class="legend_notrequired">Kĩ năng & sở trường</label>
+                <input type="button" id="toggle_trigger_stuhoppy" class="btn btn-default col-lg-offset-6" value="Rút gọn" />
+            </legend>
+            <div id="toggle_ct_stuhoppy" style="margin-top:50px">
+
+                <div style="margin-bottom:50px">
+                    <div class="col-lg-3 col-lg-push-2">
+                        <b> Kĩ năng/ sở trường : </b>
+                    </div>
+                    <div class="col-lg-8 col-lg-push-1">
+
+                        @for (int i = 0; i < Model.skillList.Count - 1; i++)
+                        {
+                            <div class="col-lg-3" style="border:dashed;border-width:1px; margin:8px" align="center">
+
+                                @Html.CheckBoxFor(m => m.skillList[i].isChecked, new { @class = "form-control ", @style = "width:15px; height:15px", align = "center" })
+                                @Html.Label(Model.skillList[i].NAME)
+
+                            </div>
+
+                            @Html.HiddenFor(m => m.skillList[i].NAME)
+                            @Html.HiddenFor(m => m.skillList[i].ID)
+                            @Html.HiddenFor(m => m.skillList[i].isChecked)
+
+
+                            if ((i + 1) % 3 == 0)
+                            {
+                                <br />
+                                <br />
+                            }
+                        }
+                    </div>
+                </div>
+                <div style="margin-top:80px;height:initial;margin-bottom:50px">
+                    <div class="col-lg-3 col-lg-push-2" style="margin-top:50px">
+                        <b> Sở thích : </b>
+                    </div>
+                    <div class="col-lg-8 col-lg-push-1" style="margin-top:20px">
+                        @Html.TextAreaFor(model => model.cvStudent.HOBBY, 4, 50, htmlAttributes: new { @class = "form-control " })
+                    </div>
+                </div>
+                <div style="margin-top:50px;height:initial;margin-bottom:50px">
+                    <div class="col-lg-3 col-lg-push-2" style="margin-top:50px">
+                        <b> Kỹ năng tài lẻ : </b>
+                    </div>
+                    <div class="col-lg-8 col-lg-push-1" style="margin-top:20px">
+                        @Html.TextAreaFor(model => model.cvStudent.SPECIAL_SKILLS_TALENTS, 4, 50, htmlAttributes: new { @class = "form-control" })
+                    </div>
+                </div>
+
+                <div>
+                    <div>
+                        <input class="btn btn-primary col-md-offset-5 col-lg-2" type="submit" value="Save" formmethod="post" style="margin-top:20px" />
+                    </div>
+                </div>
+                @Html.HiddenFor(m => m.student.ALTER_DATE)
+                @Html.HiddenFor(m => m.student.ALTER_USER)
+                @Html.HiddenFor(m => m.student.AVATAR)
+                @Html.HiddenFor(m => m.student.CLASS_CODE)
+                @Html.HiddenFor(m => m.student.CODE)
+                @Html.HiddenFor(m => m.student.CREATE_DATE)
+                @Html.HiddenFor(m => m.student.CREATE_USER)
+                @Html.HiddenFor(m => m.student.EMAIL)
+                @Html.HiddenFor(m => m.student.FACULTIES_FK)
+                @Html.HiddenFor(m => m.student.ID)
+                @Html.HiddenFor(m => m.student.NAME)
+                @Html.HiddenFor(m => m.student.PHONE)
+                @Html.HiddenFor(m => m.student.SCHOOL_FK)
+                @Html.HiddenFor(m => m.student.STATUS_FK)
+
+                @Html.HiddenFor(m => m.cvStudent.HOBBY)
+                @Html.HiddenFor(m => m.cvStudent.ID)
+                @Html.HiddenFor(m => m.cvStudent.SPECIAL_SKILLS_TALENTS)
+                @Html.HiddenFor(m => m.cvStudent.STUDENT_FK)
+            </div>
+        }
+    </fieldset>
+
+</form>

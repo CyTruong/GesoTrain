@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="89db09af83e5407dac9057390738b16d" Name="Diagram1" ZoomLevel="78">
+        <EntityTypeShape EntityType="CVModel.CV_STUDENT" Width="1.5" PointX="0.75" PointY="0.75" />
+        <EntityTypeShape EntityType="CVModel.FACULTIES" Width="1.5" PointX="2.75" PointY="0.75" />
+        <EntityTypeShape EntityType="CVModel.SCHOOL" Width="1.5" PointX="0.75" PointY="3.75" />
+        <EntityTypeShape EntityType="CVModel.SKILL" Width="1.5" PointX="2.75" PointY="3.75" />
+        <EntityTypeShape EntityType="CVModel.STATUS" Width="1.5" PointX="4.75" PointY="0.75" />
+        <EntityTypeShape EntityType="CVModel.STUDENT" Width="1.5" PointX="4.75" PointY="3.75" />
+        <EntityTypeShape EntityType="CVModel.STUDENT_EXPERIENCE" Width="1.5" PointX="6.75" PointY="0.75" />
+        <EntityTypeShape EntityType="CVModel.STUDENT_SKILL" Width="1.5" PointX="6.75" PointY="4.75" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
