@@ -17,13 +17,16 @@
 
 
 <div>
-   
+    <!--THông tin user -->
     @Html.Partial("_UserInfo",Model)
 
+    <!--Kinh nghiệm làm việc-->
     @Html.Partial("_StudentExpPartialview", Model)
 
+    <!--KĨ năng cá nhân-->
     @Html.Partial("_StudenSkillPartialview", Model)
 
+    <!--Thông tin đào tạo của nhân viên-->
     @Html.Partial("_StudentTrainningPartialview", Model)
 
 </div>

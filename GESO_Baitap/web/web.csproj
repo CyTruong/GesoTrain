@@ -34,6 +34,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -308,6 +309,7 @@
     <Content Include="Views\Home\_StudentExpPartialview.cshtml" />
     <Content Include="Views\Home\_StudenSkillPartialview.cshtml" />
     <Content Include="Views\Home\_StudentTrainningPartialview.cshtml" />
+    <Content Include="Views\Home\_EditStudentExpPartialview.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
