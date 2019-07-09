@@ -22,17 +22,18 @@
                 </dt>
 
                 <dd style="color:blue">
-
-                    @if (Model.student.GENDER == 1)
-                    {
-                        <b> Nam</b>
-                    }
-                    else
-                    {
-                        <b> Nữ</b>
-
-                    }
-
+                    <b>
+                        @{
+                            List<SelectListItem> listgender = ((IEnumerable<SelectListItem>)ViewBag.gender).ToList();
+                            foreach (SelectListItem item in listgender)
+                            {
+                                if (item.Value.Equals(Model.student.GENDER.ToString()))
+                                {
+                                    @Html.DisplayName(item.Text)
+                                }
+                            }
+                        }
+                    </b>
                 </dd>
 
 
@@ -129,7 +130,7 @@
 
                     <div class="form-group">
                         @Html.Label("Tên :", htmlAttributes: new { @class = "control-label col-md-3", @style = "margin-top:10px" })
-                        <div class="col-md-8">
+                        <div class="col-md-7">
                             @Html.EditorFor(model => model.student.NAME, new { htmlAttributes = new { @class = "form-control", @style = "margin-top:10px",@name="name" } })
                             @Html.ValidationMessageFor(model => model.student.NAME, "", new { @class = "text-danger" })
                         </div>
@@ -137,7 +138,7 @@
 
                     <div class="form-group">
                         @Html.Label("Email :", htmlAttributes: new { @class = "control-label col-md-3", @style = "margin-top:10px" })
-                        <div class="col-md-8">
+                        <div class="col-md-7">
                             @Html.EditorFor(model => model.student.EMAIL, new { htmlAttributes = new { @class = "form-control", @style = "margin-top:10px" } })
                             @Html.ValidationMessageFor(model => model.student.EMAIL, "", new { @class = "text-danger" })
                         </div>
@@ -145,23 +146,24 @@
 
                     <div class="form-group">
                         @Html.Label("Giới tính:", htmlAttributes: new { @class = "control-label col-md-3", @style = "margin-top:10px" })
-                        <div class="col-md-8">
-                            @Html.EditorFor(model => model.student.GENDER, new { htmlAttributes = new { @class = "form-control", @style = "margin-top:10px" } })
+                        <div class="col-md-7" style="margin-top:10px; width:400px" >
+                            @Html.DropDownListFor(model => model.student.GENDER, (IEnumerable<SelectListItem>)ViewBag.gender, "", htmlAttributes: new { @class = "select2 form-control", @style = "margin-top:10px" })
                             @Html.ValidationMessageFor(model => model.student.GENDER, "", new { @class = "text-danger" })
                         </div>
                     </div>
 
                     <div class="form-group">
                         @Html.Label("SĐT :", htmlAttributes: new { @class = "control-label col-md-3", @style = "margin-top:10px" })
-                        <div class="col-md-8">
+                        <div class="col-md-7">
                             @Html.EditorFor(model => model.student.PHONE, new { htmlAttributes = new { @class = "form-control", @style = "margin-top:10px" } })
                             @Html.ValidationMessageFor(model => model.student.PHONE, "", new { @class = "text-danger" })
                         </div>
+                        <br />
                     </div>
 
                     <div class="form-group">
                         @Html.Label("Mã lớp :", htmlAttributes: new { @class = "control-label col-md-3", @style = "margin-top:10px" })
-                        <div class="col-md-8">
+                        <div class="col-md-7">
                             @Html.EditorFor(model => model.student.CLASS_CODE, new { htmlAttributes = new { @class = "form-control", @style = "margin-top:10px" } })
                             @Html.ValidationMessageFor(model => model.student.CLASS_CODE, "", new { @class = "text-danger" })
                         </div>
@@ -169,7 +171,7 @@
 
                     <div class="form-group">
                         @Html.Label("Trường : ", htmlAttributes: new { @class = "control-label col-md-3", @style = "margin-top:10px" })
-                        <div class="col-md-8" style="margin-top:10px">
+                        <div class="col-md-7" style="margin-top:10px">
                             @Html.DropDownListFor(model => model.student.SCHOOL_FK, (IEnumerable<SelectListItem>)ViewBag.list_school, "", htmlAttributes: new { @class = "select2 col-lg-5", @style = "margin-top:10px" })
                             @Html.ValidationMessageFor(model => model.student.SCHOOL_FK, "", new { @class = "text-danger" })
                         </div>
@@ -178,7 +180,7 @@
 
                     <div class="form-group">
                         @Html.Label("HTĐT: ", htmlAttributes: new { @class = "control-label col-md-3", @style = "margin-top:10px" })
-                        <div class="col-md-8">
+                        <div class="col-md-7">
                             @Html.EditorFor(model => model.student.CODE, new { htmlAttributes = new { @class = "form-control", @style = "margin-top:10px" } })
                             @Html.ValidationMessageFor(model => model.student.CODE, "", new { @class = "text-danger" })
                         </div>
@@ -186,7 +188,7 @@
 
                     <div class="form-group">
                         @Html.Label("Ngành : ", htmlAttributes: new { @class = "control-label col-md-3", @style = "margin-top:10px" })
-                        <div class="col-md-8" style="margin-top:10px">
+                        <div class="col-md-7" style="margin-top:10px">
                             @Html.DropDownListFor(model => model.student.FACULTIES_FK, (IEnumerable<SelectListItem>)ViewBag.fau, "", htmlAttributes: new { @class = " col-lg-5", @style = "margin-top:10px" })
                             @Html.ValidationMessageFor(model => model.student.FACULTIES_FK, "", new { @class = "text-danger" })
                         </div>
@@ -194,7 +196,7 @@
 
                     <div class="form-group">
                         @Html.Label("Avata : ", htmlAttributes: new { @class = "control-label col-md-3", @style = "margin-top:10px" })
-                        <div class="col-md-8">
+                        <div class="col-md-7">
                             @Html.EditorFor(model => model.student.AVATAR, new { htmlAttributes = new { @class = "form-control", @style = "margin-top:10px" } })
                             @Html.ValidationMessageFor(model => model.student.AVATAR, "", new { @class = "text-danger" })
                         </div>
@@ -203,7 +205,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="submit" class="btn btn-primary" formmethod="post">Save changes </button>
+                    <button type="submit" class="btn btn-primary" >Save changes </button>
                 </div>
             </div>
         </div>

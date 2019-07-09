@@ -16,7 +16,10 @@ namespace web.Controllers
         private const int TO_YEAR = 2020;
         private UserModel model;
 
-
+        public ActionResult Testview()
+        {
+            return View();
+        }
 
         public ActionResult Userpage()
         {
@@ -98,6 +101,15 @@ namespace web.Controllers
             #endregion
 
             #region creat selection
+
+            SelectList gender = new SelectList(new List<SelectListItem>
+            {
+                  new SelectListItem { Text = "Nam", Value = "0"},
+                  new SelectListItem {  Text = "Nữ", Value = "1"},
+                  new SelectListItem {  Text = "Không xác định", Value = "2"}
+
+            }, "Value", "Text");
+
             SelectList trinhdo = new SelectList(new List<SelectListItem>
             {
                   new SelectListItem { Text = "Đại học", Value = "1"},
@@ -134,7 +146,7 @@ namespace web.Controllers
                 selectListsSchool.Add(schoolitem);
             }
             #endregion
-
+            ViewBag.gender = gender;
             ViewBag.stu_fau = fau_name;
             ViewBag.list_school = selectListsSchool;
             ViewBag.fau = selectListFau;

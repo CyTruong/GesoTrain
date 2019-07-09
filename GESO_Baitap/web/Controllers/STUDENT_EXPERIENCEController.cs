@@ -112,7 +112,7 @@ namespace web.Controllers
             STUDENT_EXPERIENCE sTUDENT_EXPERIENCE = db.STUDENT_EXPERIENCE.Find(id);
             db.STUDENT_EXPERIENCE.Remove(sTUDENT_EXPERIENCE);
             db.SaveChanges();
-            return RedirectToAction("Index");
+            return Redirect("/Home/Userpage");
         }
 
         protected override void Dispose(bool disposing)
